@@ -16,10 +16,8 @@ FROM kalilinux/kali-linux-docker # Metadata params ARG BUILD_DATE ARG VERSION AR
       MAINTAINER="Steev Klimaszewski <steev@kali.org>"
 RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /etc/apt/sources.list && \
     echo "deb-src http://http.kali.org/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
-ENV DEBIAN_FRONTEND noninteractive 
-RUN set -x \
+ENV DEBIAN_FRONTEND noninteractive RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
-    && apt-get clean \
-    && apt install synapse kali-linux-web xorg xfce4
+    && apt-get clean
 CMD ["bash"]
